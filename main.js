@@ -1,1 +1,1 @@
-document.querySelector(".icon").setAttribute("transform","rotate(45)");
+(()=>{"use strict";document.querySelector(".project_button").addEventListener("click",(function(){!function(){const t=document.querySelector(".arrow");"rotate(-90)"==t.getAttribute("transform")?(console.log("test"),t.setAttribute("transform","rotate(0)")):t.setAttribute("transform","rotate(-90)")}()})),document.querySelector(".arrow").setAttribute("transform","rotate(0)")})();
