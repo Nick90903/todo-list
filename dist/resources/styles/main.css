@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+
+    --sidebar_Background: rgb(245, 245, 245) ;
+}
+
+header {
+    background-color: orange;
+    height: 44px;
+    padding-left: 35px;
+}
+
+.main {
+    width: 100vw;
+    height: calc(100vh - 44px);
+    display: flex;
+}
+
+.sidebar {
+    background-color: var(--sidebar_Background);
+    height: 100%;
+    width: 305px;
+    padding-left: 35px;
+}
+
+.projects_Expansion_Panel {
+    padding-top: 15px;
+}
+
+.project_Button_Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 36px;
+}
+
+.project_button {
+    background-color: var(--sidebar_Background);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#project_Title {
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 10px;
+}
+
+.adder_Icon {
+    margin-right: 15px;
+    border: none;
+    background-color: var(--sidebar_Background);
+}
+
+.arrow {
+    transform: rotate(-90deg);
+}
