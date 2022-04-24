@@ -1,2 +1,3 @@
-let test = document.querySelector('.icon');
-test.setAttribute("transform", "rotate(45)");
+import { projectLoad, toggleDrop } from "./project";
+
+projectLoad();

@@ -38,8 +38,9 @@ header {
     background-color: var(--sidebar_Background);
     border: none;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    width: 90%;
 }
 
 #project_Title {
@@ -52,8 +53,4 @@ header {
     margin-right: 15px;
     border: none;
     background-color: var(--sidebar_Background);
-}
-
-.arrow {
-    transform: rotate(-90deg);
 }
