@@ -1,3 +1,3 @@
-import { projectLoad, toggleDrop } from "./project";
+import { addListeners } from "./buttonDetection";
 
-projectLoad();
+addListeners();

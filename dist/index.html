@@ -9,9 +9,43 @@
     <link rel="stylesheet" href="./resources/styles/main.css">
 </head>
 <body>
-    <header>
+    <div class="focusLock">
+        <div class="formContainer">
+            <header class="formHeader">
+                <h1>Add Project</h1>
+            </header>
+            <form id="form" action="./main.js">
+                <div class="formField">
+                    <label for="name">Name</label>
+                    <input class="input" type="text" id="name" name="name" placeholder="    Project Name">
+                </div>
+                <div class="formField">
+                    <label for="color">Color</label>
+                    <select class="input" id="color" name="color">
+                        <option value="0">Black</option>
+                        <option value="1">Red</option>
+                    </select>
+                </div>
+                <div class="sliderContainer form_Field_Inline">
+                    <label class="switch">
+                        <input type="checkbox" name="favorite">
+                        <span class="slider round"></span>
+                    </label>
+                    <p>Add to favorites</p>
+                </div>
+                <div id="formButtons">
+                    <button type="button" class="button" id="create">Create</button>
+                    <button type="button" class="button" id="cancel" >cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <header class="mainHeader">
 
     </header>
+
+
 
     <div class="main">
         <div class="sidebar">
