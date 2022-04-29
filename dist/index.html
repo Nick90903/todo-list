@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./resources/styles/main.css">
 </head>
 <body>
-    <div class="focusLock">
+    <div class="focusLock" id="projectForm">
         <div class="formContainer">
             <header class="formHeader">
                 <h1>Add Project</h1>
@@ -17,7 +17,7 @@
             <form id="form" action="./main.js">
                 <div class="formField">
                     <label for="name">Name</label>
-                    <input class="input" type="text" id="name" name="name" placeholder="    Project Name">
+                    <input class="input" type="text" id="name" name="name" placeholder="Project Name">
                 </div>
                 <div class="formField">
                     <label for="color">Color</label>
@@ -26,16 +26,44 @@
                         <option value="1">Red</option>
                     </select>
                 </div>
+                <div class="date_Priority">
+                    <input type="date" name="date" id="date">
+                    <label for="priority">Priority</label>
+                    <input type="number" name="priority" id="priority" min="0" max="99">
+                </div>
                 <div class="sliderContainer form_Field_Inline">
                     <label class="switch">
-                        <input type="checkbox" name="favorite">
+                        <input type="checkbox" name="favorite" value="true">
                         <span class="slider round"></span>
                     </label>
                     <p>Add to favorites</p>
                 </div>
-                <div id="formButtons">
+                <div class="formButtons">
                     <button type="button" class="button" id="create">Create</button>
                     <button type="button" class="button" id="cancel" >cancel</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="focusLock" id="taskFormHolder">
+        <div class="formContainer">
+            <header class="formHeader">
+                <h1>Add Task</h1>
+            </header>
+            <form id="taskForm" action="./main.js">
+                <div class="formField">
+                    <label for="taskTitle">Title</label>
+                    <input class="input" type="text" id="taskTitle" placeholder="Task Title">
+                </div>
+                <div class="formField">
+                    <label for="description">description</label>
+                    <input class="input" type="text" id="description" placeholder="Enter a breif description for your task">
+                </div>
+                <div class="formButtons">
+                    <button type="button" class="button" id="projectCreate">Create</button>
+                    <button type="button" class="button" id="projectCancel">Cancel</button>
                 </div>
             </form>
         </div>
@@ -57,6 +85,7 @@
                     </button>
                     <button class="adder_Icon"><svg width="13" height="13" ><path d="M6 6V.5a.5.5 0 0 1 1 0V6h5.5a.5.5 0 1 1 0 1H7v5.5a.5.5 0 1 1-1 0V7H.5a.5.5 0 0 1 0-1H6z" fill="currentColor" fill-rule="evenodd"></path></svg>
                     </button>
+                    
                 </div>
             </div>
         </div>

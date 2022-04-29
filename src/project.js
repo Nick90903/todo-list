@@ -1,62 +1,91 @@
-let projects = [];
+/* eslint-disable camelcase */
+import { editProjectList, hideForm } from './dom';
 
-//Adds button functionality to dropdown
-function projectLoad() {
+export const projects = [];
+export const projects_Favorite = [];
 
+function sort() {
+  projects.sort((a, b) => a.getPriority() - b.getPriority());
 }
 
-function toggleDrop() {
-    const arrow = document.querySelector('.arrow');
+const createProject = (_title, _color, _favorite, _date, _priority) => {
+  let title = _title;
+  const color = _color;
+  const isFavorite = _favorite;
+  const date = _date;
+  let priority = _priority;
+  let description = 'Enter a description.';
+  let ID = projects.length + projects_Favorite.length;
+  const tasks = [];
 
-    if(arrow.getAttribute('transform') == 'rotate(-90)') {
-        console.log('test');
-        arrow.setAttribute("transform", "rotate(0)");
-    } else {
-        arrow.setAttribute("transform", "rotate(-90)");
-    }
-}
+  if (_favorite == true) {
+    ID += 500;
+  }
 
-// Create a project
+  const getTitle = () => title;
+  const getColor = () => color;
+  const getFavorite = () => isFavorite;
+  const getDate = () => date;
+  const getPriority = () => priority;
+  const getID = () => ID;
+  const getDescription = () => description;
+  const getTasks = () => tasks;
+
+  const updateTitle = (newTitle) => title = newTitle;
+  const updateDescription = (newDescription) => description = newDescription;
+  const updatePriority = (newPriority) => {
+    priority = newPriority;
+    sort();
+  };
+  const addTask = (_task) => {
+    tasks.push(_task);
+  };
+
+  return {
+    getTitle,
+    getColor,
+    getFavorite,
+    getDate,
+    getPriority,
+    getID,
+    getDescription,
+    getTasks,
+    updateTitle,
+    updateDescription,
+    updatePriority,
+  };
+};
+
+// Create a project function
 
 function addNewProject() {
-    const form = document.querySelector('#form');
-    projects.push(createProject(form.name.value , form.color.value, form.favorite.value));
-    console.log(projects[0].getTitle());
-    hideForm();
+  const form = document.querySelector('#form');
+  if (form.favorite.checked == true) {
+    projects_Favorite.push(createProject(
+      form.name.value,
+      form.color.value,
+      form.favorite.checked,
+      form.date.value,
+      form.priority.value,
+    ));
+  } else {
+    projects.push(createProject(
+      form.name.value,
+      form.color.value,
+      form.favorite.checked,
+      form.date.value,
+      form.priority.value,
+    ));
+  }
+  sort();
+  editProjectList();
+  hideForm();
 }
 
-function showForm () {
-    // Shows Form
-    const form = document.querySelector('.focusLock');
-    form.style.display = ('block');
-}
+// Factory Function for Project Creation
 
-function hideForm () {
-        // Hides Form
-        const form = document.querySelector('#form');
-        const Form = document.querySelector('.focusLock');
-        Form.style.display = ('none');
-        form.reset();
-}
+// Creates and adds tasks to project
 
-const createProject = (_title, _color, _favorite) => {
-    let title = '';
-    let color = '';
-    let isFavorite = false;
+// Sorts Projects by Priority
 
-    title = _title;
-    color = _color;
-    isFavorite = _favorite;
-    
-    const getTitle = () => title;
-    const getColor = () => color;
-    const getFavorite = () => isFavorite;
-
-
-    return {getTitle, getColor, getFavorite}
-}
-
-
-
-
-export {toggleDrop, projectLoad, addNewProject, showForm, hideForm};
+export { addNewProject, createProject };
