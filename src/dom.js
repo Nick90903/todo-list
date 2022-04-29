@@ -20,7 +20,6 @@ const editProjectList = () => {
       project_Container.addEventListener('click', function () {
         showCurrentProject(this.value, array[i].getFavorite());
       });
-      console.log(`${project_Container.value}Favorite`);
 
       const project_Text = document.createElement('p');
       project_Text.textContent = (array[i].getTitle());
@@ -43,10 +42,11 @@ const showCurrentProject = (value, isFavorite) => {
   });
 
   const shownIndex = findWithAttr(value, isFavorite);
-  console.log(`${shownIndex}Index`);
 
   if (isFavorite) {
     drawDom(projects_Favorite);
+  } else {
+    drawDom(projects);
   }
 
   function drawDom(array) {
@@ -65,26 +65,23 @@ const showCurrentProject = (value, isFavorite) => {
     const taskContainer = document.createElement('div');
     taskContainer.classList.add('taskContainer');
 
-    const _tasks = array[shownIndex].getTasks();
-
-    _tasks.forEach((element) => {
-
-    });
-
     const addTaskButton = document.createElement('button');
     addTaskButton.classList.add('addTask');
     addTaskButton.addEventListener('click', () => {
       showProjectForm();
     });
+    addTaskButton.value = value;
     addTaskButton.textContent = ('Add Task');
-
-    taskContainer.appendChild(addTaskButton);
 
     container.appendChild(title);
     container.appendChild(description);
+    container.appendChild(addTaskButton);
     container.appendChild(taskContainer);
 
     content.appendChild(container);
+
+    console.log('updaing taslk form');
+    updateTaskForm(value);
   }
 }
 
@@ -93,7 +90,6 @@ const showCurrentProject = (value, isFavorite) => {
 function findWithAttr(value, isFavorite) {
   if (isFavorite) {
     for (var i = 0; i < projects_Favorite.length; i++) {
-      console.log(`${projects_Favorite[i].getID()}Value`);
       if (projects_Favorite[i].getID() == value) {
         return i;
       }
@@ -101,7 +97,6 @@ function findWithAttr(value, isFavorite) {
     return -1;
   }
   for (var i = 0; i < projects.length; i++) {
-    console.log(`${projects[i].getID()}Value`);
     if (projects[i].getID() == value) {
       return i;
     }
@@ -122,8 +117,6 @@ function toggleDrop() {
 }
 
 function showForm() {
-  // Shows Form
-  console.log('hi');
   const form = document.querySelector('#projectForm');
   form.style.display = ('block');
 }
@@ -147,6 +140,45 @@ function showProjectForm() {
   const form = document.querySelector('#taskFormHolder');
   form.style.display = ('block');
 }
+
+function updateTaskForm(value) {
+
+  let temp = document.querySelectorAll('.taskContainer');
+  temp.forEach(element => {
+    element.remove();
+  })
+
+  let index = -500;
+  if(value >= 500) {
+    index = findWithAttr(value, true);
+    drawTasks(projects_Favorite);
+  } else {
+    index = findWithAttr(value, false);
+    drawTasks(projects);
+  }
+
+  function drawTasks(array) {
+    let taskArray = array[index].returnTask();
+    let container = document.querySelector('.container');
+
+
+    taskArray.forEach(element => {
+      let taskContainer = document.createElement('div');
+      taskContainer.classList.add('taskContainer');
+
+      const title = document.createElement('p');
+      title.textContent = element.getTitle();
+
+      const description = document.createElement('p');
+      description.textContent = element.getDescription();
+
+      taskContainer.appendChild(title);
+      taskContainer.appendChild(description);
+      container.appendChild(taskContainer);
+    })
+  }
+
+}
 export {
-  editProjectList, toggleDrop, showForm, hideForm, hideProjectForm, showProjectForm,
+  editProjectList, toggleDrop, showForm, hideForm, hideProjectForm, showProjectForm, findWithAttr, updateTaskForm,
 };

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { editProjectList, hideForm } from './dom';
+import { editProjectList, findWithAttr, hideForm, hideProjectForm, updateTaskForm } from './dom';
 
 export const projects = [];
 export const projects_Favorite = [];
@@ -29,7 +29,7 @@ const createProject = (_title, _color, _favorite, _date, _priority) => {
   const getPriority = () => priority;
   const getID = () => ID;
   const getDescription = () => description;
-  const getTasks = () => tasks;
+  const returnTask = () => tasks;
 
   const updateTitle = (newTitle) => title = newTitle;
   const updateDescription = (newDescription) => description = newDescription;
@@ -39,6 +39,7 @@ const createProject = (_title, _color, _favorite, _date, _priority) => {
   };
   const addTask = (_task) => {
     tasks.push(_task);
+    console.log(tasks[tasks.length - 1].getTitle());
   };
 
   return {
@@ -49,13 +50,42 @@ const createProject = (_title, _color, _favorite, _date, _priority) => {
     getPriority,
     getID,
     getDescription,
-    getTasks,
+    returnTask,
     updateTitle,
     updateDescription,
     updatePriority,
+    addTask,
   };
 };
 
+const addTask = (value) => {
+  let form = document.querySelector('#taskForm');
+  let index = -500;
+    if(value >= 500) {
+      index = findWithAttr(value, true);
+      addToArray(projects_Favorite);
+    } else {
+      index = findWithAttr(value, false);
+      addToArray(projects);
+    }
+
+    function addToArray(array) {
+      array[index].addTask(test(form.taskTitle.value, form.description.value));
+    }
+
+    hideProjectForm();
+    updateTaskForm(value);
+}
+
+const test = (_title, _description) => {
+  let title = _title;
+  let description = _description;
+
+  const getTitle = () => title;
+  const getDescription = () => description;
+
+  return {getTitle, getDescription}
+}
 // Create a project function
 
 function addNewProject() {
@@ -88,4 +118,4 @@ function addNewProject() {
 
 // Sorts Projects by Priority
 
-export { addNewProject, createProject };
+export { addNewProject, createProject, addTask };

@@ -1,7 +1,7 @@
 import {
   hideForm, hideProjectForm, showForm, showProjectForm, toggleDrop,
 } from './dom';
-import { addNewProject } from './project';
+import { addNewProject, addTask } from './project';
 
 // Enables Project Dropdown and Hide
 
@@ -47,7 +47,8 @@ function taskButtons() {
 
   const create = document.querySelector('#projectCreate');
   create.addEventListener('click', () => {
-    showProjectForm();
+    let temp = document.querySelector('.addTask');
+    addTask(temp.value);
   });
 }
 

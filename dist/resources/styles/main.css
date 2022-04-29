@@ -87,6 +87,11 @@ header.mainHeader {
     flex-direction: column;
 }
 
+.taskContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
 /* End Content Styling */
 /* Project Form */
 
