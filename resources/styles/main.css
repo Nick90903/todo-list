@@ -16,12 +16,16 @@ header.mainHeader {
     display: flex;
 }
 
+/* Sidebar Styling */ 
+
 .sidebar {
     background-color: var(--sidebar_Background);
     height: 100%;
     width: 305px;
     padding-left: 35px;
 }
+
+    /* Projects Dropdown Styling */
 
 .projects_Expansion_Panel {
     padding-top: 15px;
@@ -55,6 +59,35 @@ header.mainHeader {
     background-color: var(--sidebar_Background);
 }
 
+    /* End Dropdown Styling */
+
+    /* Additional Projects Styling */
+
+.project {
+    margin-left: 32px;
+    width: 179px;
+    border: none;
+    text-align: left;
+    padding: 0px;
+    background-color:var(--sidebar_Background);
+}
+
+
+    /* End Additional Projects Syling */
+
+/* End Sidebar Syling */
+
+/* Content Styling */
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* End Content Styling */
 /* Project Form */
 
 .focusLock {
@@ -119,12 +152,29 @@ label {
     font-size: 14px;
 }
 
-#formButtons {
+.formButtons {
     display: flex;
     justify-content: center;
     gap: 24px;
     margin-left: 24px;
     margin-right: 24px;
+}
+
+.date_Priority {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 24px;
+    margin-left: 24px;
+
+}
+
+#date {
+    width: 135px;
+}
+
+#priority {
+    width: 30px;
 }
 
 #create {
