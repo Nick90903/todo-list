@@ -166,6 +166,12 @@ function updateTaskForm(value) {
       let taskContainer = document.createElement('div');
       taskContainer.classList.add('taskContainer');
 
+      const toggle = document.createElement('input');
+      toggle.type = ('checkbox');
+      toggle.addEventListener('click', () => {
+        
+      })
+
       const title = document.createElement('p');
       title.textContent = element.getTitle();
 
