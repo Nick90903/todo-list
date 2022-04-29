@@ -51,7 +51,7 @@ function taskButtons() {
   });
 }
 
-export default function addListeners() {
+export function addListeners() {
   projectDropdownDetection();
   addProjectDetection();
   formButtonDetection();
